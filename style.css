@@ -56,6 +56,16 @@ nav a{
 nav a:hover{
     color: var(--orange);
 }
+/* first link doesn't need space on its left */
+nav a:first-child{
+    margin-left: 0;
+}
+/* outline when using the keyboard (Tab key) */
+nav a:focus-visible,
+.button:focus-visible{
+    outline: 3px solid var(--orange);
+    outline-offset: 4px;
+}
 
 /* ===== HERO WITH REAL PHOTO ===== */
 .hero{
@@ -90,6 +100,10 @@ nav a:hover{
 .button:hover{
     background-color: #c4661b;
 }
+/* button "presses down" when clicked */
+.button:active{
+    transform: scale(0.96);
+}
 
 /* ===== FACTS ===== */
 .facts{
@@ -112,6 +126,17 @@ nav a:hover{
     padding: 30px 20px;
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+}
+.stat:hover{
+    transform: translateY(-6px);
+}
+/* the first stat (PM2.5 level) is the most important, so it stands out */
+.stat:first-of-type{
+    background-color: var(--dark);
+}
+.stat:first-of-type p{
+    color: #ccc;
 }
 .number{
     display: block;
@@ -147,6 +172,10 @@ nav a:hover{
 .split-text p{
     color: var(--gray);
 }
+/* no extra space under the last paragraph */
+.split-text p:last-child{
+    margin-bottom: 0;
+}
 
 /* ===== SOLUTIONS ===== */
 .solutions{
@@ -168,6 +197,10 @@ nav a:hover{
     border-top: 4px solid var(--orange);
     box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     text-align: left;
+    transition: transform 0.2s;
+}
+.card:hover{
+    transform: translateY(-6px);
 }
 .card h3{
     margin-top: 0;
@@ -188,8 +221,16 @@ nav a:hover{
 .sources a{
     color: var(--dark);
 }
+/* links you already opened turn gray */
+.sources a:visited{
+    color: var(--gray);
+}
 .sources li{
-    margin-bottom: 6px;
+    padding: 8px 12px;
+}
+/* striped list: every second row gets a background */
+.sources li:nth-child(even){
+    background-color: white;
 }
 
 /* ===== FOOTER ===== */
@@ -203,6 +244,10 @@ footer{
 footer a{
     color: #ccc;
 }
+/* every footer paragraph except the credits is a bit brighter */
+footer p:not(.credits){
+    color: #ddd;
+}
 .credits{
     font-size: 12px;
 }
@@ -215,7 +260,8 @@ footer a{
         padding: 14px 16px;
         text-align: center;
     }
-    nav a{
+    nav a,
+    nav a:first-child{
         margin: 0 8px;
     }
     .hero{
